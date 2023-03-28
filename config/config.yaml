@@ -1,0 +1,4 @@
+species: Tenrec_caudatus
+
+# Path to accession numbers and links for public data download
+targets: config/download_targets.tsv
