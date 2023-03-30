@@ -59,11 +59,11 @@ rule select_from_gtf:
     Generate a gtf file only with sequences included in the collapsed transcriptome.
     """
     input:
-        gtf=expand("{original_gtf}", original_gtf=config["reference"]["gtf"]),
+        gtf=expand("results/reference/{transcriptome_name}.eggnog.gtf", transcriptome_name=config["reference"]["filename"]),
         script="workflow/scripts/select_from_gtf.py",
         list_of_transcripts=expand("results/reference/treeinform/threshold_{{threshold}}/{species}.collapsed.fasta.transcripts.list.txt", species=config["species"])
     output:
-        expand("results/reference/treeinform/threshold_{{threshold}}/{original_gtf_name}.selected.gtf", original_gtf_name=config["reference"]["gtfname"])
+        expand("results/reference/treeinform/threshold_{{threshold}}/{transcriptome_name}.eggnog.selected.gtf", transcriptome_name=config["reference"]["filename"])
     params:
         outdir="results/reference/treeinform/threshold_{threshold}"
     shell:

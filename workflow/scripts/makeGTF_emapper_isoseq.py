@@ -35,22 +35,22 @@ outDir = sys.argv[3]  # output directory
 filename = PurePosixPath(transcriptomeFile).name
 
 # # Functionally annotate the ORF sequences with eggNOG-mapper
-# subprocess.call(
-#     [
-#         python,
-#         emapper,
-#         "-i",
-#         proteinFile,
-#         "-m",
-#         "diamond",
-#         "-o",
-#         filename,
-#         "--cpu",
-#         "15",
-#         "--output_dir",
-#         outDir,
-#     ]
-# )
+subprocess.call(
+    [
+        python,
+        emapper,
+        "-i",
+        proteinFile,
+        "-m",
+        "diamond",
+        "-o",
+        filename,
+        "--cpu",
+        "15",
+        "--output_dir",
+        outDir,
+    ]
+)
 
 # Generate a gene list and the gene ID/transcript ID map from the original transcriptome file
 geneListFile = (

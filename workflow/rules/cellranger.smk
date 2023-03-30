@@ -10,7 +10,7 @@ rule mkref_cellranger:
     """
     input:
         transcript=expand("results/reference/treeinform/threshold_{{threshold}}/{species}.collapsed.fasta.transcripts.fasta", species=config["species"]),
-        gtf=expand("results/reference/treeinform/threshold_{{threshold}}/{original_gtf_name}.selected.gtf", original_gtf_name=config["reference"]["gtfname"])
+        gtf=expand("results/reference/treeinform/threshold_{{threshold}}/{transcriptome_name}.eggnog.selected.gtf", transcriptome_name=config["reference"]["filename"])
     output:
         directory("results/reference/treeinform/threshold_{threshold}/cellranger/reference")
     threads: 8

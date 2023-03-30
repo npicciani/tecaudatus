@@ -2,3 +2,9 @@ species: Tenrec_ecaudatus
 
 # Path to accession numbers and links for public data download
 targets: config/download_targets.tsv
+
+# Reference before processing:
+reference:
+  path: resources/isoseq/clustered.hq.fasta
+  filename: clustered.hq.fasta
+  filestem: clustered.hq
