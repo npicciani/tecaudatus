@@ -269,7 +269,7 @@ for transcript in transcript_length_dict:
         transcript
         + "\ttranscriptome\texon\t1\t"
         + str(transcript_length_dict[transcript])
-        + '\t.\t-\t.\tgene_id "'
+        + '\t.\t+\t.\tgene_id "'
         + gene
         + '"; transcript_id "'
         + transcript
