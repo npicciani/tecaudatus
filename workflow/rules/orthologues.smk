@@ -1,14 +1,20 @@
 from datetime import date
-import re
+import os
 
 def get_orthofinder_outdir():
     """
     Generate path to orthofinder gene trees folder with current date as written by orthofinder
     """
-    today = date.today()
-    monthDay = today.strftime("%b%d")
-    outdir= f"results/orthofinder/Results_{monthDay}/Gene_Trees"
-    return outdir
+    ortho_dir='results/orthofinder'
+    if os.path.exists(ortho_dir):
+        for results_folder in os.listdir(ortho_dir):
+            results_path=f"results/orthofinder/{results_folder}/Gene_Trees"
+            return results_path
+    else:
+        today = date.today()
+        monthDay = today.strftime("%b%d")
+        outdir= f"results/orthofinder/Results_{monthDay}/Gene_Trees"
+        return outdir
 
 rule generate_longest_ORFs:
     """
@@ -84,6 +90,7 @@ rule orthofinder:
         expand("resources/sequences/{species}.pep.fasta", species=targets.index)
     output:
         directory(get_orthofinder_outdir())
+        # expand("results/orthofinder/Results_{monthDay}/Gene_Trees",monthDay=ORTHODATE)
     conda:
         "../../workflow/envs/orthofinder.yaml"
     threads: 20

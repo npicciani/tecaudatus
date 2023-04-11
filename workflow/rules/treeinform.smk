@@ -63,7 +63,7 @@ rule select_from_gtf:
         script="workflow/scripts/select_from_gtf.py",
         list_of_transcripts=expand("results/reference/treeinform/threshold_{{threshold}}/{species}.collapsed.fasta.transcripts.list.txt", species=config["species"])
     output:
-        expand("results/reference/treeinform/threshold_{{threshold}}/{transcriptome_name}.eggnog.selected.gtf", transcriptome_name=config["reference"]["filename"])
+        expand("results/reference/treeinform/threshold_{{threshold}}/{transcriptome_name}.eggnog.gtf.selected.gtf", transcriptome_name=config["reference"]["filename"])
     params:
         outdir="results/reference/treeinform/threshold_{threshold}"
     shell:
