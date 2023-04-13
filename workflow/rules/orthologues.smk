@@ -90,7 +90,6 @@ rule orthofinder:
         expand("resources/sequences/{species}.pep.fasta", species=targets.index)
     output:
         directory(get_orthofinder_outdir())
-        # expand("results/orthofinder/Results_{monthDay}/Gene_Trees",monthDay=ORTHODATE)
     conda:
         "../../workflow/envs/orthofinder.yaml"
     threads: 20

@@ -6,7 +6,6 @@ rule collapse_with_treeinform:
     """
     input:
         gene_trees=get_orthofinder_outdir(),
-        # gene_trees=expand("results/orthofinder/Results_{monthDay}/Gene_Trees",monthDay=ORTHODATE),
         script="workflow/scripts/treeinform_collapse.py"
     output:
         collapsed_proteins=expand("results/reference/treeinform/threshold_{{threshold}}/{species}.collapsed.fasta", species=config["species"])
@@ -26,7 +25,6 @@ rule plot_subtree_histogram:
     """
     input:
         gene_trees=get_orthofinder_outdir(),
-        # gene_trees=expand("results/orthofinder/Results_{monthDay}/Gene_Trees",monthDay=ORTHODATE),
         script="workflow/scripts/plot_subtree_histogram.py",
         collapsed_proteins=expand("results/reference/treeinform/threshold_{{threshold}}/{species}.collapsed.fasta", species=config["species"])
     output:

@@ -4,7 +4,6 @@ min_version("6.4.1")
 
 configfile: "config/config.yaml"
 THRESHOLD_VALS = "0,0.5,1,2,3,4,5,8,10,15,20,25".split(",")
-# ORTHODATE, = glob_wildcards("results/orthofinder/Results_{monthDay}/Gene_Trees")
 SAMPLE_IDS = "Te132_MG,Te134_MG,Te135_MG,Te136_NP".split(",")
 
 # load rules
@@ -22,7 +21,6 @@ rule all:
         expand("results/reference/{transcriptome_stem}.transdecoder_dir/longest_orfs.pep", transcriptome_stem=config["reference"]["filestem"]),
         expand("results/reference/{transcriptome_name}.eggnog.gtf", transcriptome_name=config["reference"]["filename"]),
         get_orthofinder_outdir(),
-        # expand("results/orthofinder/Results_{monthDay}/Gene_Trees",monthDay=ORTHODATE),
         expand("results/reference/treeinform/threshold_{threshold}/{species}.collapsed.fasta.transcripts.fasta", threshold=THRESHOLD_VALS, species=config["species"]),
         expand("results/reference/treeinform/threshold_{threshold}/branch.length.hist_{threshold}.png", threshold=THRESHOLD_VALS),
         expand("results/reference/treeinform/threshold_{threshold}/{transcriptome_name}.eggnog.gtf.selected.gtf", transcriptome_name=config["reference"]["filename"], threshold=THRESHOLD_VALS),
