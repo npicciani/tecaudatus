@@ -96,9 +96,9 @@ with open(emapperFile, "r") as infile:
                 outfile.write(proteinID + "\t" + geneID + "\n")
 
 emapper_proteinID_field = 0
-emapper_gene_name_field = 11  # Preferred_name
-emapper_gene_description_field = 10  # best_og_desc
-emapper_goterms_field = 12  # GOs
+emapper_gene_name_field = 8  # Preferred_name
+emapper_gene_description_field = 7  # Description
+emapper_goterms_field = 9  # GOs
 
 # Read in proteinID-to-geneID dictionary, gene list, and tab delimited fasta/sequence file to calculate length
 
